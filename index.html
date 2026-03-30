@@ -115,80 +115,16 @@
 
     </p>      
 
-    <div class="viz-container">
-            <iframe src="visualizations/frequency_distribution_criminal_incidents.html" 
-                    style="width:100%; height:500px; border:none; border-radius:8px;"></iframe>
-            <p class="caption">
+        <div class="viz-container" style="max-width: 100%; overflow: hidden;">
+            <iframe 
+                src="visualizations/frequency_distribution_criminal_incidents.html" 
+                style="width: 100%; height: 80vh; min-height: 600px; border: none; border-radius: 8px;"
+                scrolling="no">
+            </iframe>
                 Figure 1. Less frequent but equally important categories—such as arson, embezzlement, 
                 human trafficking, and homicide—are also included for a comprehensive overview.
             </p>
         </div>
-        <!-- 
-        <style>
-            .scientific-table {
-                border-collapse: collapse;
-                width: 100%;
-                max-width: 600px;
-                font-family: "Times New Roman", Times, serif;
-                margin: 20px 0;
-            }
-            .scientific-table caption {
-                text-align: left;
-                margin-bottom: 10px;
-                font-weight: bold;
-            }
-            .scientific-table thead th {
-                border-top: 2px solid black;
-                border-bottom: 1px solid black;
-                padding: 8px;
-                text-align: left;
-            }
-            .scientific-table tbody td {
-                padding: 6px 8px;
-                border: none;
-            }
-            .scientific-table tfoot td {
-                border-top: 1px solid black;
-                border-bottom: 2px solid black;
-                font-weight: bold;
-                padding: 8px;
-            }
-            .text-left { text-align: left; }
-            .text-right { text-align: right; }
-        </style>
-        
-        <table class="scientific-table">
-            <caption>Table 1. Summary of Crime Incidents by Category</caption>
-            <thead>
-                <tr>
-                    <th class="text-left">Incident Category</th>
-                    <th class="text-right">Frequency (<i>n</i>)</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td class="text-left">Larceny/Theft</td><td class="text-right">736,346</td></tr>
-                <tr><td class="text-left">Assault</td><td class="text-right">219,150</td></tr>
-                <tr><td class="text-left">Vandalism</td><td class="text-right">176,865</td></tr>
-                <tr><td class="text-left">Motor Vehicle Theft</td><td class="text-right">172,558</td></tr>
-                <tr><td class="text-left">Burglary</td><td class="text-right">140,138</td></tr>
-                <tr><td class="text-left">Drug/Narcotic Offense</td><td class="text-right">140,124</td></tr>
-                <tr><td class="text-left">Robbery</td><td class="text-right">73,030</td></tr>
-                <tr><td class="text-left">Fraud</td><td class="text-right">72,210</td></tr>
-                <tr><td class="text-left">Missing Person</td><td class="text-right">63,769</td></tr>
-                <tr><td class="text-left">Weapon Laws</td><td class="text-right">32,498</td></tr>
-                <tr><td class="text-left">Family/Children Offense</td><td class="text-right">13,591</td></tr>
-                <tr><td class="text-left">Sex Offense - Forcible</td><td class="text-right">8,310</td></tr>                
-                <tr><td class="text-left">Other 40 Crime Categories</td><td class="text-right">1,051,526</td></tr>
-            </tbody>
-            <tfoot>
-                <tr>
-                    <td class="text-left">Total</td>
-                    <td class="text-right">2,920,115</td>
-                </tr>
-            </tfoot>
-        </table>
-        --->
-
     
     <p>
         By combining detailed classifications with geographic and temporal indicators, this dataset 
@@ -232,10 +168,13 @@
 
         <section>
             <h2>2. How Crime Changed Over Time</h2>
-            <div class="viz-container">
+            <div class="viz-container"  style="max-width: 100%; overflow: hidden;">
                 <!-- Interactive Plotly Time Series -->
-                <iframe src="visualizations/annual_incidents_counts_2023_2025.html" width="100%" height="420" frameborder="0"></iframe>
-                <p class="caption">
+                <iframe 
+                    src="visualizations/annual_incidents_counts_2003_2025.html"  
+                    style="width: 100%; height: 80vh; min-height: 600px; border: none; border-radius: 8px;"
+                    scrolling="no">
+                </iframe>
                     Hover over any line to see exact numbers. Notice how property crime dropped sharply after 2015 while violent crime remained more stubborn. 
                     What changed in San Francisco during those years?
                 </p>
