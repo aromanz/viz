@@ -115,29 +115,68 @@
 
     </p>      
         
-            <table>
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Crime</th>
-                        <th>Count</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td>1</td><td>Assault</td><td>219150</td></tr>
-                    <tr><td>2</td><td>Robbery</td><td>73030</td></tr>
-                    <tr><td>3</td><td>Burglary</td><td>140138</td></tr>
-                    <tr><td>4</td><td>Motor Vehicle Theft</td><td>172558</td></tr>
-                    <tr><td>5</td><td>Larceny/Theft</td><td>736346</td></tr>
-                    <tr><td>6</td><td>Sex Offense - Forcible</td><td>8310</td></tr>
-                    <tr><td>7</td><td>Weapon Laws</td><td>32498</td></tr>
-                    <tr><td>8</td><td>Drug/Narcotic Offense</td><td>140124</td></tr>
-                    <tr><td>9</td><td>Fraud</td><td>72210</td></tr>
-                    <tr><td>10</td><td>Vandalism</td><td>176865</td></tr>
-                    <tr><td>11</td><td>Missing Person</td><td>63769</td></tr>
-                    <tr><td>12</td><td>Family/Children Offense</td><td>13591</td></tr>
-                </tbody>
-            </table>
+        <style>
+            .scientific-table {
+                border-collapse: collapse;
+                width: 100%;
+                max-width: 600px;
+                font-family: "Times New Roman", Times, serif;
+                margin: 20px 0;
+            }
+            .scientific-table caption {
+                text-align: left;
+                margin-bottom: 10px;
+                font-weight: bold;
+            }
+            .scientific-table thead th {
+                border-top: 2px solid black;
+                border-bottom: 1px solid black;
+                padding: 8px;
+                text-align: left;
+            }
+            .scientific-table tbody td {
+                padding: 6px 8px;
+                border: none;
+            }
+            .scientific-table tfoot td {
+                border-top: 1px solid black;
+                border-bottom: 2px solid black;
+                font-weight: bold;
+                padding: 8px;
+            }
+            .text-left { text-align: left; }
+            .text-right { text-align: right; }
+        </style>
+        
+        <table class="scientific-table">
+            <caption>Table 1. Summary of Crime Incidents by Category</caption>
+            <thead>
+                <tr>
+                    <th class="text-left">Incident Category</th>
+                    <th class="text-right">Frequency (<i>n</i>)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td class="text-left">Larceny/Theft</td><td class="text-right">736,346</td></tr>
+                <tr><td class="text-left">Assault</td><td class="text-right">219,150</td></tr>
+                <tr><td class="text-left">Vandalism</td><td class="text-right">176,865</td></tr>
+                <tr><td class="text-left">Motor Vehicle Theft</td><td class="text-right">172,558</td></tr>
+                <tr><td class="text-left">Burglary</td><td class="text-right">140,138</td></tr>
+                <tr><td class="text-left">Drug/Narcotic Offense</td><td class="text-right">140,124</td></tr>
+                <tr><td class="text-left">Robbery</td><td class="text-right">73,030</td></tr>
+                <tr><td class="text-left">Fraud</td><td class="text-right">72,210</td></tr>
+                <tr><td class="text-left">Missing Person</td><td class="text-right">63,769</td></tr>
+                <tr><td class="text-left">Weapon Laws</td><td class="text-right">32,498</td></tr>
+                <tr><td class="text-left">Family/Children Offense</td><td class="text-right">13,591</td></tr>
+                <tr><td class="text-left">Sex Offense - Forcible</td><td class="text-right">8,310</td></tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td class="text-left">Total</td>
+                    <td class="text-right">1,868,589</td>
+                </tr>
+            </tfoot>
+        </table>
 
     
     <p>
