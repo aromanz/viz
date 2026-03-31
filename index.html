@@ -5,110 +5,71 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>San Francisco Crime Trends 2003–2026: What the Numbers Really Tell Us</title>
     <style>
-        :root {
-            --bg: #f8f9fa;
-            --text: #222;
-            --accent: #e94560;
-            --card: #ffffff;
-            --shadow: rgba(0,0,0,0.08);
-        }
-        [data-theme="dark"] {
-            --bg: #0f0f1a;
-            --text: #e0e0e0;
-            --accent: #ff6b7d;
-            --card: #21213a;
-            --shadow: rgba(0,0,0,0.3);
-        }
         body {
             margin: 0;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.7;
-            transition: background 0.3s ease;
+            background: #f8f9fa;
+            color: #222;
+            line-height: 1.6;
         }
         header {
             background: linear-gradient(135deg, #0f3460, #16213e);
             color: white;
-            padding: 4.5rem 1.5rem 3rem;
+            padding: 4rem 1.5rem;
             text-align: center;
-            position: relative;
         }
         header h1 {
             font-size: 2.8rem;
             margin-bottom: 1rem;
-            color: #fff;
-        }
-        .toggle {
-            position: absolute;
-            top: 2rem;
-            right: 2rem;
-            background: rgba(255,255,255,0.2);
-            border: none;
-            color: white;
-            padding: 0.6rem 1.2rem;
-            border-radius: 50px;
-            cursor: pointer;
-            font-size: 0.95rem;
+            color: #e94560;
         }
         .container {
-            max-width: 920px;
+            max-width: 900px;
             margin: 0 auto;
             padding: 2rem 1.5rem;
         }
         section {
-            margin-bottom: 4.5rem;
+            margin-bottom: 4rem;
         }
         h2 {
             color: #0f3460;
-            border-bottom: 3px solid var(--accent);
-            padding-bottom: 0.6rem;
+            border-bottom: 3px solid #e94560;
+            padding-bottom: 0.5rem;
+        }
+        p {
+            font-size: 1.1rem;
         }
         .viz-container {
-            background: var(--card);
+            background: white;
             border-radius: 12px;
-            padding: 1.8rem;
-            box-shadow: 0 6px 16px var(--shadow);
-            margin: 1.8rem 0;
+            padding: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            margin: 1.5rem 0;
         }
         .caption {
             font-style: italic;
             color: #555;
-            margin-top: 1rem;
-            font-size: 1.02rem;
+            margin-top: 0.8rem;
+            font-size: 1rem;
         }
         .explore-btn {
             display: inline-block;
-            background: var(--accent);
+            background: #e94560;
             color: white;
-            padding: 0.9rem 2rem;
+            padding: 0.8rem 1.8rem;
             border-radius: 8px;
             text-decoration: none;
-            font-weight: 600;
-            margin-top: 1.5rem;
-            transition: all 0.2s ease;
+            font-weight: bold;
+            margin-top: 1rem;
         }
         .explore-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(233,69,96,0.3);
+            background: #c13a52;
         }
+        /* Drill-down dashboard styling */
         #drilldown {
             background: #f1f3f5;
-            padding: 2.5rem;
-            border-radius: 16px;
-        }
-        [data-theme="dark"] #drilldown {
-            background: #1a1a2e;
-        }
-        .card {
-            background: var(--card);
-            padding: 1.6rem;
+            padding: 2rem;
             border-radius: 12px;
-            box-shadow: 0 4px 12px var(--shadow);
-            transition: transform 0.2s ease;
-        }
-        .card:hover {
-            transform: scale(1.03);
         }
     </style>
 </head>
@@ -116,72 +77,124 @@
 
     <!-- ==================== MARTINI GLASS OPENING ==================== -->
     <header>
-        <button class="toggle" onclick="toggleTheme()">🌗 Toggle Theme</button>
         <h1>San Francisco Crime Trends 2003–2026</h1>
-        <p style="max-width: 760px; margin: 1.2rem auto; font-size: 1.3rem;">
-            Two decades of police data reveal clear patterns: most crime concentrates in a few categories, 
+        <p style="max-width: 750px; margin: 1rem auto; font-size: 1.25rem;">
+            Two decades of police data reveal clear patterns: most crime concentrates in just a few categories, 
             some neighborhoods improved dramatically while others stayed challenging, and the shape of crime 
-            changed in surprising ways after 2018. Here’s what the numbers really tell us.
+            changed in surprising ways. Here’s what the numbers really tell us — in plain language.
         </p>
         <a href="#story-start" class="explore-btn">Begin the Story →</a>
     </header>
 
-    <div class="container">
+    <section class="container">
+        <h2>How We Collected and Organized the Crime Information</h2>
+    
+    <div class="viz-container">
+        <img src="visualizations/historic_recent_time_series_files_2003_2026.png" alt="Historic Time Series 2003 to 2026" style="width:100%; border-radius:12px;">
+        <p class="caption">
+            The analysis in this report is based on publicly available information from 
+            the <a href="https://data.sfgov.org" target="_blank">San Francisco Open Data Portal</a>, 
+            under the Public Safety section. One of the key resources offered to residents, researchers, 
+            and policymakers is the dataset <strong>“Police Department Incident Report: 2018 to Present.”</strong>, and
+            <strong>“Police Department Incident Reports Historical 2003 to May 2018.”</strong>
+        </p>
+    </div>
 
-        <!-- Data & Methodology (still part of Martini Glass – author sets context) -->
-        <section>
-            <h2>How the Data Was Prepared</h2>
-            <div class="viz-container">
-                <img src="visualizations/frequency_distribution_criminal_incidents.png" alt="Frequency Distribution of Criminal Incidents by Category" style="width:100%; border-radius:10px;">
-                <p class="caption">
-                    Figure 1. Frequency distribution of criminal incidents by category (2003–2025). 
-                    Most incidents cluster in a small number of categories (tall peaks), while a long tail represents less frequent but often more serious offenses. 
-                    We focused on the most relevant categories that drive the majority of public safety decisions.
-                </p>
-            </div>
-            <p>
-                The analysis combines two official SFPD sources: 2003–2018 and 2018–2025. To avoid duplicates, only the 2018 records from the second file were used. 
-                We selected the most impactful crime categories based on volume, severity, and policy relevance.
+    <p>
+            This dataset provides a detailed record of police‑reported incidents across the city. 
+            It includes essential information such as the date and time of the event, report details, 
+            unique incident identifiers, police district, neighborhood, supervisor district, and 
+            geographic coordinates. Together, these fields offer a clear picture of when and where 
+            incidents occur, supporting transparency and informed decision‑making.
+    </p>
+
+    <p>
+
+            The data also classifies each report into an incident category. The most frequently recorded 
+            categories include:
+
+    </p>      
+
+        <div class="viz-container" style="max-width: 100%; overflow: hidden;">
+            <iframe 
+                src="visualizations/frequency_distribution_criminal_incidents.html" 
+                style="width: 100%; height: 80vh; min-height: 600px; border: none; border-radius: 8px;"
+                scrolling="no">
+            </iframe>
+                Figure 1. Less frequent but equally important categories—such as arson, embezzlement, 
+                human trafficking, and homicide—are also included for a comprehensive overview.
             </p>
-        </section>
+        </div>
+    
+    <p>
+        By combining detailed classifications with geographic and temporal indicators, this dataset 
+        serves as a valuable tool for understanding patterns, identifying emerging issues, and supporting 
+        evidence‑based policy development for the residents of San Francisco. The criteria selection of table 1 crimes were:
+    
+        <ul>
+            <li>Violence or threat to life.</li>
+            <li>Serious property loss or community harm.</li>
+            <li>Organized crime or high severity offenses.</li>
+            <li>Crimes that deeply affect public safety and social stability.</li>
+        </ul>
+    </p>
+
+
+    <!-- Transition to Interactive Slideshow -->
+    <!-- <a href="#slideshow-start" class="explore-btn" style="display:inline-block; margin-top:2rem;">
+        Continue the Story → How Crime Changed Over Time
+    </a> -->
+        
+    </section>
+
+    <div class="container">
 
         <!-- ==================== INTERACTIVE SLIDESHOW CORE ==================== -->
         <section id="story-start">
             <h2>1. The Big Picture: Where Crime Clusters</h2>
             <div class="viz-container">
-                <img src="visualizations/frequency_distribution_criminal_incidents.png" alt="Crime category distribution" style="width:100%; border-radius:10px;">
+                <!-- Static Chart (DAOST-style KDE or Jitter) -->
+                <img 
+                    src="visualizations/crime_category_distribution.png" 
+                    alt="Crime category distribution" style="width:100%; border-radius:8px;">
                 <p class="caption">
                     Most incidents fall into a small number of categories (the tall peaks), but there is a long tail of less frequent yet serious crimes. 
-                    This shape tells us that focusing resources on a few key categories can have outsized impact.
+                    This shape tells us that focusing on a few key categories can have outsized impact.
                 </p>
             </div>
             <p>
-                When we examine the <strong>distribution shape</strong> of all reported crimes, we see strong clustering — a classic pattern where a handful of categories dominate. 
-                This is the first insight for decision-makers: targeted action on these peaks produces the greatest results.
+                When we look at the <strong>distribution</strong> of all reported crimes, we see strong clustering — a classic “few categories dominate” pattern. 
+                This is the first insight for busy leaders: resources work best when targeted at the tallest peaks.
             </p>
         </section>
 
         <section>
             <h2>2. How Crime Changed Over Time</h2>
-            <div class="viz-container">
-                <img src="visualizations/annual_incidents_counts_2003_2025.png" alt="Annual Incident Counts 2003-2025" style="width:100%; border-radius:10px;">
+            <div class="viz-container"  style="max-width: 100%; overflow: hidden;">
+                <!-- Interactive Plotly Time Series -->
+                <iframe 
+                    src="visualizations/annual_incidents_counts_2003_2025.html"  
+                    style="width: 100%; height: 80vh; min-height: 600px; border: none; border-radius: 8px;"
+                    scrolling="no">
+                </iframe>
                 <p class="caption">
-                    Annual incident counts for focus crimes (2003–2025). Notice the sharp drop around 2020 (COVID-19) and the partial rebound afterward. 
-                    Property crime declined more significantly than violent crime in recent years.
+                    Hover over any line to see exact numbers. Notice how property crime dropped sharply after 2015 while violent crime remained more stubborn. 
+                    What changed in San Francisco during those years?
                 </p>
             </div>
             <p>
-                The time-series shape shows clear trends: some categories declined steadily, others showed sudden drops or rebounds. 
-                These changes reflect shifts in policing, policy, and city life.
+                The time-series shape reveals clear trends: some crimes declined steadily, others showed sudden drops or rebounds. 
+                These patterns are not random — they reflect real shifts in policing, policy, and city life.
             </p>
         </section>
 
         <section>
             <h2>3. Where Crime Happens: The Geographic Story</h2>
             <div class="viz-container">
-                <img src="visualizations/sf_crime_choropleth.png" alt="Relative Risk by Police District" style="width:100%; border-radius:10px;">
+                <!-- Interactive Map -->
+                <iframe src="visualizations/sf_crime_choropleth.html" width="100%" height="480" frameborder="0"></iframe>
                 <p class="caption">
-                    Relative risk by San Francisco Police District. Darker areas indicate higher crime density. 
+                    Darker areas show higher crime density. Zoom in and click any district to see which crime categories dominate there. 
                     Some neighborhoods improved dramatically; others still need focused attention.
                 </p>
             </div>
@@ -191,55 +204,45 @@
             </p>
         </section>
 
-        <!-- ==================== DRILL-DOWN STORY (4 cards – 2×2) ==================== -->
+        <!-- ==================== DRILL-DOWN STORY ENDING ==================== -->
         <section id="drilldown">
             <h2>Answer Your Own Questions</h2>
-            <p style="margin-bottom: 2rem; font-size: 1.15rem;">
-                You’ve seen the overall story. Now explore the data in the way that matters most to you.
+            <p style="margin-bottom: 1.5rem;">
+                You’ve seen the overall story. Now explore the data yourself — choose what matters most to your role.
             </p>
             
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem;">
-                <!-- Card 1 -->
-                <div class="card">
-                    <h3 style="color:#0f3460;">Violent Crime Focus</h3>
-                    <p>See the shape and trends of assaults, robberies, and homicides over two decades.</p>
-                    <a href="visualizations/violent_crime_drilldown.html" class="explore-btn" style="background:#0f3460; font-size:0.95rem; padding:0.7rem 1.4rem;">Explore Violent Crimes →</a>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
+                <div class="card" style="background:white; border:1px solid #ddd; padding:1.2rem;">
+                    <h3 style="color:#0f3460;">Focus on Violent Crime</h3>
+                    <p>See the shape of assaults, robberies, and homicides over time and by district.</p>
+                    <a href="visualizations/crime_hourly_interactive.html" class="explore-btn" style="background:#0f3460; font-size:0.95rem;">Explore Violent Crimes →</a>
                 </div>
                 
-                <!-- Card 2 -->
-                <div class="card">
+                <div class="card" style="background:white; border:1px solid #ddd; padding:1.2rem;">
                     <h3 style="color:#0f3460;">Property Crime Patterns</h3>
                     <p>Understand theft, burglary, and vehicle theft — where they cluster and how they changed.</p>
-                    <a href="visualizations/property_crime_drilldown.html" class="explore-btn" style="background:#0f3460; font-size:0.95rem; padding:0.7rem 1.4rem;">Explore Property Crimes →</a>
+                    <a href="visualizations/evolution_crime_hourly_interactive.html" class="explore-btn" style="background:#0f3460; font-size:0.95rem;">Explore Property Crimes →</a>
                 </div>
                 
-                <!-- Card 3 -->
-                <div class="card">
-                    <h3 style="color:#0f3460;">Historic vs Recent Comparison</h3>
-                    <p>Compare daily crime frequency before and after 2018, including the COVID-19 impact.</p>
-                    <a href="visualizations/comparison_crime_frequencies_historic_vs_recent.html" class="explore-btn" style="background:#0f3460; font-size:0.95rem; padding:0.7rem 1.4rem;">Compare Periods →</a>
-                </div>
-                
-                <!-- Card 4 -->
-                <div class="card">
-                    <h3 style="color:#0f3460;">District-Level Deep Dive</h3>
-                    <p>Zoom into any police district and see which crime categories dominate there.</p>
-                    <a href="visualizations/sf_crime_choropleth.html" class="explore-btn" style="background:#0f3460; font-size:0.95rem; padding:0.7rem 1.4rem;">Explore Districts →</a>
+                <div class="card" style="background:white; border:1px solid #ddd; padding:1.2rem;">
+                    <h3 style="color:#0f3460;">Compare Districts</h3>
+                    <p>Pick any two neighborhoods and see side-by-side distributions and trends.</p>
+                    <a href="visualizations/sf_crime_heatmap.html" class="explore-btn" style="background:#0f3460; font-size:0.95rem;">Compare Districts →</a>
                 </div>
             </div>
+
+            <p style="margin-top: 2rem; text-align:center; font-size:1rem; color:#555;">
+                <strong>Tip:</strong> Use the filters and hover tools to answer your specific questions. 
+                All charts use the same clear color scheme so you can move between views easily.
+            </p>
         </section>
 
         <footer style="text-align:center; padding:3rem 1rem; color:#666; font-size:0.95rem;">
-            <p>Data: San Francisco Police Department Incident Reports (2003–2025). 2018 records taken exclusively from the 2018–2025 file to avoid duplicates.</p>
-            <p style="margin-top:1rem;">Made with clarity and respect for your time.</p>
+            <p>Data source: San Francisco Police Department Incident Reports (2003–2026). 
+            External references and methodology available in the technical notebook.</p>
+            <p style="margin-top:1rem;">Made with clarity in mind for decision-makers.</p>
         </footer>
     </div>
 
-    <script>
-        function toggleTheme() {
-            const current = document.documentElement.getAttribute('data-theme');
-            document.documentElement.setAttribute('data-theme', current === 'dark' ? 'light' : 'dark');
-        }
-    </script>
 </body>
 </html>
