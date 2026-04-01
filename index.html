@@ -145,8 +145,6 @@
         </p>
     </section>
 
-
-
     <section class="container">
         <h2>Spatial Heterogeneity: Where Crime Clusters</h2>
         <div class="viz-container">
@@ -216,67 +214,76 @@
 </section>
     
         <!-- ==================== INTERACTIVE SLIDESHOW CORE ==================== -->
+
+    <section class="container">
+        <h2>Evolution</h2>
+        <p>
+            Hover over any line to see exact numbers. Notice how property crime dropped sharply after 2015 while violent crime remained more stubborn. 
+            What changed in San Francisco during those years?
+        </p>
+            <!-- Interactive Plotly Time Series -->
+            <iframe 
+                src="visualizations/annual_incidents_counts_2003_2025.html"  
+                style="width: 100%; height: 550px; border: none; display: block;" 
+                scrolling="no">
+            </iframe>
+            <p class="caption">
+                The distribution of crime categories shows that focusing resources on the "tallest peaks" can yield the greatest impact on city-wide safety.
+            </p>
+        </div>
+        <p>
+                The time-series shape reveals clear trends: some crimes declined steadily, others showed sudden drops or rebounds. 
+                These patterns are not random — they reflect real shifts in policing, policy, and city life.
+        </p>
+    </section>
     
-        <section>
-            <h2>Evolution</h2>
-            <div class="viz-container"  style="max-width: 100%; overflow: hidden;">
-                <!-- Interactive Plotly Time Series -->
-                <iframe 
-                    src="visualizations/annual_incidents_counts_2003_2025.html"  
-                    style="width: 100%; height: 550px; border: none; display: block;" 
-                    scrolling="no">
-                </iframe>
-                <p class="caption" style="margin-top: 0; padding-top: 10px;">
-                    Hover over any line to see exact numbers. Notice how property crime dropped sharply after 2015 while violent crime remained more stubborn. 
-                    What changed in San Francisco during those years?
-                </p>
-            </div>
-            <p>
+
+    <section class="container">
+        <h2>Rhythm</h2>
+        <p>
+            <strong>Analytical Insight:</strong> Notice the <em>divergent rhythms</em>. Larceny and Theft often follow an <strong>economic clock</strong>, 
+            peaking during business hours when foot traffic is highest. In contrast, Assaults follow a <strong>social-emotional clock</strong>, 
+            intensifying during late-night hours and weekends. Does your neighborhood follow this rule?
+        </p>
+            <!-- Interactive Plotly Time Series -->
+            <iframe 
+                src="visualizations/crime_hourly_interactive.html" 
+                style="width: 100%; height: 500px; border: none;" 
+                scrolling="no">
+            </iframe>
+            <p class="caption">
+                The distribution of crime categories shows that focusing resources on the "tallest peaks" can yield the greatest impact on city-wide safety.
+            </p>
+        </div>
+        <p>
                 The time-series shape reveals clear trends: some crimes declined steadily, others showed sudden drops or rebounds. 
                 These patterns are not random — they reflect real shifts in policing, policy, and city life.
-            </p>
-        </section>
+        </p>
+    </section>
 
-        <section>
-            <h2>Rhythm</h2>
-            <div class="viz-container"  style="max-width: 100%; overflow: hidden;">
-                <!-- Interactive Plotly Hourly -->
-                <iframe 
-                    src="visualizations/crime_hourly_interactive.html" 
-                    style="width: 100%; height: 500px; border: none;" 
-                    scrolling="no">
-                </iframe>
-                <p class="caption" style="margin-top: 0; padding-top: 10px;">
-                    <strong>Analytical Insight:</strong> Notice the <em>divergent rhythms</em>. Larceny and Theft often follow an <strong>economic clock</strong>, 
-                    peaking during business hours when foot traffic is highest. In contrast, Assaults follow a <strong>social-emotional clock</strong>, 
-                    intensifying during late-night hours and weekends. Does your neighborhood follow this rule?
-                </p>
-            </div>
-            <p>
-                The time-series shape reveals clear trends: some crimes declined steadily, others showed sudden drops or rebounds. 
-                These patterns are not random — they reflect real shifts in policing, policy, and city life.
+    
+    <section class="container">
+        <h2>Pulse</h2>
+        <p>
+            <strong>Analytical Insight:</strong> While the Tenderloin and Southern districts remain high-volume centers, the <em>intensity</em> 
+            of specific crimes shifts across the map. Use the filters to see how the "2015 Pivot" affected property crime specifically in 
+            residential vs. commercial zones.
+        </p>
+            <!-- Interactive Plotly Time Series -->
+            <iframe src="visualizations/sf_crime_heatmap.html" 
+                style="width: 100%; height: 550px; border: none; display: block;" 
+                scrolling="no">                  
+            </iframe>
+            <p class="caption">
+                The distribution of crime categories shows that focusing resources on the "tallest peaks" can yield the greatest impact on city-wide safety.
             </p>
-        </section>
-
-        <section>
-            <h2>Pulse</h2>
-            <div class="viz-container"  style="max-width: 100%; overflow: hidden;">
-                <!-- Interactive Plotly Hourly -->
-                <iframe src="visualizations/sf_crime_choropleth.html" 
-                    style="width: 100%; height: 550px; border: none; display: block;" 
-                    scrolling="no">                  
-                </iframe>
-                <p class="caption" style="margin-top: 0; padding-top: 10px;">
-                    <strong>Analytical Insight:</strong> While the Tenderloin and Southern districts remain high-volume centers, the <em>intensity</em> 
-                    of specific crimes shifts across the map. Use the filters to see how the "2015 Pivot" affected property crime specifically in 
-                    residential vs. commercial zones.
-                </p>
-            </div>
-            <p>
+        </div>
+        <p>
                 The geographic distribution is highly uneven. A few districts drive most of the volume, while others show very different shapes — 
                 from heavy tails of occasional serious incidents to steady low-level activity.
-            </p>
-        </section>
+        </p>
+    </section>
+    
     
 <!--- End --->
     
