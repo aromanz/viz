@@ -77,57 +77,47 @@
 
     <!-- ==================== MARTINI GLASS OPENING ==================== -->
     <header>
-        <h1>San Francisco Crime Trends 2003–2026</h1>
-        <p style="max-width: 750px; margin: 1rem auto; font-size: 1.25rem;">
-            Two decades of police data reveal clear patterns: most crime concentrates in just a few categories, 
-            some neighborhoods improved dramatically while others stayed challenging, and the shape of crime 
-            changed in surprising ways. Here’s what the numbers really tell us — in plain language.
+        <h1>The Pulse of the City: Mapping Two Decades of San Francisco Crime</h1>
+        <p style="max-width: 800px; margin: 1rem auto; font-size: 1.2rem; line-height: 1.8;">
+            Between 2003 and 2026, San Francisco experienced profound socioeconomic and urban transformation, evolving from an emerging global tech center into a 
+            city grappling with the multifaceted challenges of the post‑pandemic era. Yet beyond the headlines and public discourse, the most revealing account of 
+            this evolution is preserved in two decades of police incident records.  
+            Our longitudinal analysis demonstrates that criminal activity in the city is far from arbitrary; instead, it exhibits well‑defined temporal patterns and 
+            distinct geographic concentrations, underscoring the structured and systematic nature of crime across San Francisco.
         </p>
         <a href="#story-start" class="explore-btn">Begin the Story →</a>
     </header>
 
     <section class="container">
-        <h2>How We Collected and Organized the Crime Information</h2>
-    
-    <div class="viz-container">
-        <img src="visualizations/historic_recent_time_series_files_2003_2026.png" alt="Historic Time Series 2003 to 2026" style="width:100%; border-radius:12px;">
-        <p class="caption">
-            The analysis in this report is based on publicly available information from 
-            the <a href="https://data.sfgov.org" target="_blank">San Francisco Open Data Portal</a>, 
-            under the Public Safety section. One of the key resources offered to residents, researchers, 
-            and policymakers is the dataset <strong>“Police Department Incident Report: 2018 to Present.”</strong>, and
-            <strong>“Police Department Incident Reports Historical 2003 to May 2018.”</strong>
+        <h2>Data Foundation & Quality Assurance<</h2>
+        <p>
+            To uphold the highest analytical standards, the engineering research team at the Technical University of Denmark (DTU) employs a unified longitudinal 
+            dataset sourced from the <a href="https://data.sfgov.org" target="_blank">SF Open Data Portal</a>. Specifically, we integrate the  
+            <strong>“Police Department Incident Report: 2018 to Present.”</strong> dataset with the <strong>“Police Department Incident Reports Historical 2003 to May 2018.”</strong>
+            dataset through a rigorous harmonization and standardization procedure. This process ensures a coherent and methodologically robust foundation for all subsequent analyses.
         </p>
-    </div>
-
-    <p>
-            This dataset provides a detailed record of police‑reported incidents across the city. 
-            It includes essential information such as the date and time of the event, report details, 
-            unique incident identifiers, police district, neighborhood, supervisor district, and 
-            geographic coordinates. Together, these fields offer a clear picture of when and where 
-            incidents occur, supporting transparency and informed decision‑making.
-    </p>
-
-    <p>
-
-            The data also classifies each report into an incident category. The most frequently recorded 
-            categories include:
-
-    </p>      
-
-    <p>
-        By combining detailed classifications with geographic and temporal indicators, this dataset 
-        serves as a valuable tool for understanding patterns, identifying emerging issues, and supporting 
-        evidence‑based policy development for the residents of San Francisco. The criteria selection of table 1 crimes were:
-    
-        <ul>
-            <li>Violence or threat to life.</li>
-            <li>Serious property loss or community harm.</li>
-            <li>Organized crime or high severity offenses.</li>
-            <li>Crimes that deeply affect public safety and social stability.</li>
-        </ul>
-    </p>
         
+        <div class="viz-container">
+            <img src="visualizations/historic_recent_time_series_files_2003_2026.png" alt="Historic Time Series 2003 to 2026" style="width:100%; border-radius:12px;">
+            <p class="caption">
+                This report draws on publicly accessible data provided through the San Francisco Open Data Portal, specifically within its Public Safety section. As one of 
+                the city’s most valuable resources for residents, researchers, and policymakers, this platform offers comprehensive datasets that facilitate transparent 
+                analysis of long‑term crime trends.
+            </p>
+        </div>
+
+        <div class="viz-container">
+            <p><strong>The “Focus Crime” Filter:</strong> Given the extensive scope of the dataset—encompassing 2,900,115 recorded incidents across 52 distinct crime 
+                categories—the analyst team implemented a targeted filtering framework to identify the offenses with the greatest implications for public safety and 
+                social stability. The selection was guided by the following criteria:</p>
+            
+            <ul style="columns: 2; -webkit-columns: 2; -moz-columns: 2;">
+                <li>Violence or threats to life</li>
+                <li>Severe property loss or economic impact</li>
+                <li>Indicators of organized or systematic criminal behavior</li>
+                <li>High‑severity disruptions to social order</li>
+            </ul>
+        </div>
     </section>
 
     <div class="container">
