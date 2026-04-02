@@ -106,13 +106,15 @@
             <img src="visualizations/historic_recent_time_series_files_2003_2026.png" alt="Historic Time Series 2003 to 2026" 
                 style="width:100%; border-radius:12px;">
             <p class="caption">
-                Comparative Temporal Analysis.</strong> The navy-blue series (2003–2018) captures 
+                <strong>Comparative Temporal Analysis.</strong> The navy-blue series (2003–2018) captures 
                 historical volatility, while the red series (2018–2026) reflects modern structural 
                 shifts and the post-pandemic decline.    
 
-                This report draws on publicly accessible data provided through the San Francisco Open Data Portal, specifically within its Public Safety section. As one of 
-                the city’s most valuable resources for residents, researchers, and policymakers, this platform offers comprehensive datasets that facilitate transparent 
-                analysis of long‑term crime trends.
+                This analysis utilizes publicly accessible datasets available through the 
+                San Francisco Open Data Portal, specifically within its Public Safety domain. As a 
+                key resource for residents, researchers, and policymakers, the portal provides 
+                comprehensive and consistently updated records that enable transparent, data‑driven 
+                examination of long‑term crime dynamics.
             </p>
         </div></section>
 
@@ -154,10 +156,19 @@
     <section class="container">
         <h2>The Anatomy of Urban Incidents</h2>
         <p>
-            Urban incidents in San Francisco exhibit a <strong>"tall peak" distribution</strong>. 
-            Larceny/Theft dominates the volume with over 750,000 cases, acting as the primary 
-            driver of city-wide statistics. In contrast, violent crimes like Assault maintain a 
-            lower but significantly more stable baseline, suggesting different social drivers.
+            When evaluating the <strong>univariate shape</strong> of San Francisco’s criminal 
+            landscape, our findings reveal a classic <strong>"Tall Peak" distribution</strong>. 
+            A disproportionate volume of total activity is concentrated within <em>Larceny/Theft</em>,
+            which accounts for over 750,000 recorded incidents since 2003. This category acts as the 
+            primary statistical driver of the city’s overall crime profile.
+        </p>
+        
+        <p>
+            In contrast, high-severity violent categories—such as <em>Assault</em> and 
+            <em>Robbery</em>—exhibit a <strong>"Stable Baseline" distribution</strong>. While their 
+            absolute frequency is lower than property crimes, their persistence across two decades 
+            suggests they are governed by deeply rooted social drivers rather than the transient 
+            economic fluctuations that influence theft.
         </p>
     
         <div class="viz-container">
@@ -166,8 +177,10 @@
                     scrolling="no">
             </iframe>
             <p class="caption">
-                The distribution of crime categories shows that focusing resources on the 
-                "tallest peaks" can yield the greatest impact on city-wide safety.
+                <strong>Categorical Frequency Distribution.</strong> From a strategic 
+                governance perspective, this visualization demonstrates that resource allocation 
+                targeting the "tallest peaks" of the distribution—specifically property 
+                crime—offers the highest potential for reducing aggregate incident volumes.
             </p>
         </div>
     
@@ -180,6 +193,7 @@
         </p>
     </section>
 
+<!---
     <section class="container">
         <h2>Spatial Heterogeneity: Where Crime Clusters</h2>
         <div class="viz-container">
@@ -213,7 +227,7 @@
                 Analysis of the geographic data suggests that crime in San Francisco is not merely a product of "bad neighborhoods," but rather a reflection of urban utility. The overlap of "alcohol hours" in entertainment zones and "transit rhythms" in downtown hubs creates predictable, localized surges in activity that demand specific, data-driven intervention.
             </p>
     </section>
-
+--->
 <!--- Start --->
 
 <section id="interactive-core" class="container">
@@ -259,7 +273,7 @@
             <!-- Interactive Plotly Time Series -->
             <iframe 
                 src="visualizations/annual_incidents_counts_2003_2025.html"  
-                style="width: 100%; height: 550px; border: none; display: block;" 
+                style="width: 100%; height: 550px; border: none; display: block;background: white;;" 
                 scrolling="no">
             </iframe>
             <p class="caption">
