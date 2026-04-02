@@ -5,13 +5,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>San Francisco Crime Trends 2003–2026: What the Numbers Really Tell Us</title>
     <style>
+        /* CSS Variables for seamless Dark Mode transition */
+        :root {
+            --bg-color: #f8f9fa;
+            --text-color: #222;
+            --container-bg: #ffffff;
+            --heading-color: #0f3460;
+            --card-shadow: rgba(0,0,0,0.08);
+            --drilldown-bg: #f1f3f5;
+            --caption-color: #555;
+            --border-color: #ddd;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #121212;
+            --text-color: #e0e0e0;
+            --container-bg: #1e1e1e;
+            --heading-color: #8da9ce;
+            --card-shadow: rgba(0,0,0,0.4);
+            --drilldown-bg: #2a2a2a;
+            --caption-color: #aaa;
+            --border-color: #444;
+        }
+
         body {
             margin: 0;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: #f8f9fa;
-            color: #222;
+            background: var(--bg-color);
+            color: var(--text-color);
             line-height: 1.6;
+            transition: background 0.3s, color 0.3s;
         }
+
+        /* Toggle Button Styling */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(233, 69, 96, 0.9);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transition: transform 0.2s;
+        }
+        .theme-toggle:hover { transform: scale(1.05); }
+
         header {
             background: linear-gradient(135deg, #0f3460, #16213e);
             color: white;
@@ -28,27 +71,26 @@
             margin: 0 auto;
             padding: 2rem 1.5rem;
         }
-        section {
-            margin-bottom: 4rem;
-        }
+        section { margin-bottom: 4rem; }
+        
         h2 {
-            color: #0f3460;
+            color: var(--heading-color);
             border-bottom: 3px solid #e94560;
             padding-bottom: 0.5rem;
         }
-        p {
-            font-size: 1.1rem;
-        }
+        p { font-size: 1.1rem; }
+
         .viz-container {
-            background: white;
+            background: var(--container-bg);
             border-radius: 12px;
             padding: 1.5rem;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            box-shadow: 0 4px 12px var(--card-shadow);
             margin: 1.5rem 0;
+            transition: background 0.3s;
         }
         .caption {
             font-style: italic;
-            color: #555;
+            color: var(--caption-color);
             margin-top: 0.8rem;
             font-size: 1rem;
         }
@@ -62,20 +104,29 @@
             font-weight: bold;
             margin-top: 1rem;
         }
-        .explore-btn:hover {
-            background: #c13a52;
-        }
-        /* Drill-down dashboard styling */
+        .explore-btn:hover { background: #c13a52; }
+
         #drilldown {
-            background: #f1f3f5;
+            background: var(--drilldown-bg);
             padding: 2rem;
             border-radius: 12px;
+            transition: background 0.3s;
         }
+        .card {
+            background: var(--container-bg) !important;
+            border: 1px solid var(--border-color) !important;
+            transition: background 0.3s, border 0.3s;
+        }
+        .card h3 { color: var(--heading-color) !important; }
+
+        /* Ensure iframes have a white background if they don't support dark mode */
+        iframe { background: white; border-radius: 8px; }
     </style>
 </head>
 <body>
 
-    <!-- ==================== MARTINI GLASS OPENING ==================== -->
+    <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">🌓 Switch Mode</button>
+
     <header>
         <h1>The Pulse of the City: Mapping Two Decades of San Francisco Crime</h1>
         <p style="max-width: 800px; margin: 1rem auto; font-size: 1.2rem; line-height: 1.8;">
@@ -85,7 +136,7 @@
             a sequence of random events, but a system of <strong>predictable temporal rhythms</strong> 
             and <strong>spatial concentrations</strong>.
         </p>
-        <a href="#story-start" class="explore-btn">Begin the Story →</a>
+        <a href="#interactive-core" class="explore-btn">Begin the Story →</a>
     </header>
 
     <section class="container">
@@ -93,13 +144,7 @@
             <p>
                 To maintain the highest standards of analytical integrity, the research team at the <strong>Technical University of Denmark (DTU)</strong> 
                 has engineered a unified longitudinal dataset. This foundation was built by harmonizing two primary streams from the 
-                <a href="https://data.sfgov.org" target="_blank" style="color: #1a3a5f; text-decoration: underline;">San Francisco Open Data Portal</a>: 
-                the Historical Incident Archive (2003–2018) and the Contemporary Incident Reporting System (2018–Present).
-            </p>
-            <p>
-                The integration process utilized rigorous standardization protocols to bridge discrepancies in reporting taxonomies and software migrations. 
-                This ensured that the 2.9 million recorded incidents remain comparable across two decades, providing a methodologically sound basis for 
-                identifying strategic public safety trends.                
+                <a href="https://data.sfgov.org" target="_blank" style="color: #e94560; text-decoration: underline;">San Francisco Open Data Portal</a>.
             </p>
         
         <div class="viz-container">
@@ -108,67 +153,17 @@
             <p class="caption">
                 <strong>Comparative Temporal Analysis.</strong> The navy-blue series (2003–2018) captures 
                 historical volatility, while the red series (2018–2026) reflects modern structural 
-                shifts and the post-pandemic decline.    
-
-                This analysis utilizes publicly accessible datasets available through the 
-                San Francisco Open Data Portal, specifically within its Public Safety domain. As a 
-                key resource for residents, researchers, and policymakers, the portal provides 
-                comprehensive and consistently updated records that enable transparent, data‑driven 
-                examination of long‑term crime dynamics.
+                shifts and the post-pandemic decline.
             </p>
-        </div></section>
-
-        <section class="container">
-            <h2>The "Focus Crime" Strategic Framework</h2>
-            <p>
-                With 52 distinct crime categories in the raw data, effective governance requires 
-                prioritization. Our team implemented a targeted filtering framework to 
-                isolate <strong>12 "Focus Crimes"</strong>—those with the highest correlation to 
-                economic stability and resident wellbeing. The selection criteria are defined as 
-                follows:
-            </p>
-            <ul class="bullet-list">
-                <li><strong>Human Capital Protection:</strong> Incidents involving direct violence 
-                    or threats to life.</li>
-                <li><strong>Economic Safeguards:</strong> Crimes resulting in severe property loss 
-                    or significant fiscal impact on the private sector.</li>
-                <li><strong>Structural Integrity:</strong> Indicators of organized, systematic, 
-                    or non-random criminal behavior.</li>
-                <li><strong>Urban Order:</strong> High-severity disruptions that threaten the 
-                    social fabric of the city’s commercial and residential districts.</li>
-            </ul>
-        </section>
-<!---
-        <div class="viz-container">
-            <p><strong>The “Focus Crime” Filter:</strong> Given the extensive scope of the dataset—encompassing 2,900,115 recorded incidents across 52 distinct crime 
-                categories—the analyst team implemented a targeted filtering framework to identify the offenses with the greatest implications for public safety and 
-                social stability. The selection was guided by the following criteria:</p>
-            
-            <ul style="columns: 2; -webkit-columns: 2; -moz-columns: 2;">
-                <li>Violence or threats to life</li>
-                <li>Severe property loss or economic impact</li>
-                <li>Indicators of organized or systematic criminal behavior</li>
-                <li>High‑severity disruptions to social order</li>
-            </ul>
         </div>
     </section>
---->
+
     <section class="container">
         <h2>The Anatomy of Urban Incidents</h2>
         <p>
             When evaluating the <strong>univariate shape</strong> of San Francisco’s criminal 
             landscape, our findings reveal a classic <strong>"Tall Peak" distribution</strong>. 
-            A disproportionate volume of total activity is concentrated within <em>Larceny/Theft</em>,
-            which accounts for over 750,000 recorded incidents since 2003. This category acts as the 
-            primary statistical driver of the city’s overall crime profile.
-        </p>
-        
-        <p>
-            In contrast, high-severity violent categories—such as <em>Assault</em> and 
-            <em>Robbery</em>—exhibit a <strong>"Stable Baseline" distribution</strong>. While their 
-            absolute frequency is lower than property crimes, their persistence across two decades 
-            suggests they are governed by deeply rooted social drivers rather than the transient 
-            economic fluctuations that influence theft.
+            A disproportionate volume of total activity is concentrated within <em>Larceny/Theft</em>.
         </p>
     
         <div class="viz-container">
@@ -177,212 +172,72 @@
                     scrolling="no">
             </iframe>
             <p class="caption">
-                <strong>Categorical Frequency Distribution.</strong> From a strategic 
-                governance perspective, this visualization demonstrates that resource allocation 
-                targeting the "tallest peaks" of the distribution—specifically property 
-                crime—offers the highest potential for reducing aggregate incident volumes.
+                <strong>Categorical Frequency Distribution.</strong> Resource allocation 
+                targeting the "tallest peaks" offers the highest potential for reducing aggregate incident volumes.
             </p>
         </div>
-    
-        <p>
-            Geographically, the story is one of <strong>district-level disparity</strong>. While 
-            districts like the Tenderloin and Southern drive the volume of property 
-            crimes, the "rhythms" of these crimes vary. Larceny often follows an 
-            <em>economic clock</em> (aligned with business hours), whereas assaults often follow 
-            a <em>social-emotional clock</em> (peaking during late-night hours).
-        </p>
     </section>
 
-<!---
-    <section class="container">
-        <h2>Spatial Heterogeneity: Where Crime Clusters</h2>
-        <div class="viz-container">
-            <iframe src="visualizations/sf_crime_choropleth.html" 
-                style="width: 100%; height: 550px; border: none;" 
-                scrolling="no">                  
-            </iframe>
-            <p class="caption">
-                <strong>Choropleth Analysis:</strong> Darker gradients represent higher incident density. By interacting with the districts, you can observe how 
-                specific crime "signatures" define different urban zones.
-            </p>
-        </div>
-            <p>
-                The geographic distribution of crime in San Francisco is characterized by <strong>extreme spatial heterogeneity</strong>. Rather than a uniform spread, 
-                the data reveals a "hub-and-spoke" model where a small subset of districts—specifically the <em>Southern</em> and <em>Tenderloin</em> areas—account for a 
-                disproportionate volume of the city's total incidents.
-            </p>
-            
-            <p>
-                We observe two distinct distribution "shapes":
-            </p>
-            <ul style="margin-bottom: 1.5rem;">
-                <li><strong>The High-Volume Peaks:</strong> Districts characterized by high pedestrian foot traffic and commercial density act as "target-rich environments."
-                    Here, crimes follow an <em>Economic Clock</em>, peaking during business hours when the opportunity for larceny is highest.</li>
-                <li><strong>The Heavy-Tail Districts:</strong> Peripheral residential zones exhibit a "long tail" distribution. While total incident counts are lower, 
-                    these areas often see sporadic but high-severity incidents, reflecting different socio-environmental drivers such as "opportunity windows" created by 
-                    residential vacancy during work hours.</li>
-            </ul>
-
-            <p style="border-left: 4px solid #e94560; padding-left: 15px; font-style: italic;">
-                Analysis of the geographic data suggests that crime in San Francisco is not merely a product of "bad neighborhoods," but rather a reflection of urban utility. The overlap of "alcohol hours" in entertainment zones and "transit rhythms" in downtown hubs creates predictable, localized surges in activity that demand specific, data-driven intervention.
-            </p>
-    </section>
---->
-<!--- Start --->
-
-<section id="interactive-core" class="container">
-    <div style="background: #ffffff; border-radius: 15px; padding: 2.5rem; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
-        <h2 style="text-align: center; border: none; margin-bottom: 1.5rem;">The Interactive Exploration: 2003–2026</h2>
-        
-        <p style="font-size: 1.15rem; color: #444; line-height: 1.8;">
-            Having established the city-wide baseline, we now invite you to engage with the data directly. 
-            This interactive suite is designed to move from the <strong>macro-historical trend</strong> 
-            to the <strong>micro-temporal rhythm</strong>, culminating in a geographic animation of the city’s 
-            changing safety profile. 
-        </p>
-
-        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin: 2rem 0;">
-            <div style="text-align: center; padding: 15px; border-right: 1px solid #eee;">
-                <h4 style="color: #e94560;">Evolution</h4>
-                <p style="font-size: 0.9rem;">Trace 20 years of category shifts and policy impacts.</p>
-            </div>
-            <div style="text-align: center; padding: 15px; border-right: 1px solid #eee;">
-                <h4 style="color: #e94560;">Rhythm</h4>
-                <p style="font-size: 0.9rem;">Analyze the 24-hour distribution and reporting bias.</p>
-            </div>
-            <div style="text-align: center; padding: 15px;">
-                <h4 style="color: #e94560;">Pulse</h4>
-                <p style="font-size: 0.9rem;">Watch hotspots migrate in a dynamic animated map.</p>
+    <section id="interactive-core" class="container">
+        <div class="viz-container" style="padding: 2.5rem;">
+            <h2 style="text-align: center; border: none; margin-bottom: 1.5rem;">The Interactive Exploration: 2003–2026</h2>
+            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin: 2rem 0;">
+                <div style="text-align: center; padding: 15px; border-right: 1px solid var(--border-color);">
+                    <h4 style="color: #e94560;">Evolution</h4>
+                    <p style="font-size: 0.9rem;">Trace 20 years of category shifts.</p>
+                </div>
+                <div style="text-align: center; padding: 15px; border-right: 1px solid var(--border-color);">
+                    <h4 style="color: #e94560;">Rhythm</h4>
+                    <p style="font-size: 0.9rem;">Analyze the 24-hour distribution.</p>
+                </div>
+                <div style="text-align: center; padding: 15px;">
+                    <h4 style="color: #e94560;">Pulse</h4>
+                    <p style="font-size: 0.9rem;">Watch hotspots migrate.</p>
+                </div>
             </div>
         </div>
-
-        <p style="font-style: italic; color: #666; text-align: center; border-top: 1px solid #eee; pt: 1rem;">
-            "Data is a story told in numbers; interaction is the lens that brings it into focus."
-        </p>
-    </div>
-</section>
-    
-        <!-- ==================== INTERACTIVE SLIDESHOW CORE ==================== -->
-
-    <section class="container">
-        <h2>Evolution</h2>
-        <p>
-            Hover over any line to see exact numbers. Notice how property crime dropped sharply after 2015 while violent crime remained more stubborn. 
-            What changed in San Francisco during those years?
-        </p>
-            <!-- Interactive Plotly Time Series -->
-            <iframe 
-                src="visualizations/annual_incidents_counts_2003_2025.html"  
-                style="width: 100%; height: 550px; border: none; display: block;background: white;;" 
-                scrolling="no">
-            </iframe>
-            <p class="caption">
-                The distribution of crime categories shows that focusing resources on the "tallest peaks" can yield the greatest impact on city-wide safety.
-            </p>
-        </div>
-        <p>
-                The time-series shape reveals clear trends: some crimes declined steadily, others showed sudden drops or rebounds. 
-                These patterns are not random — they reflect real shifts in policing, policy, and city life.
-        </p>
-    </section>
-    
-
-    <section class="container">
-        <h2>Rhythm</h2>
-        <p>
-            <strong>Analytical Insight:</strong> Notice the <em>divergent rhythms</em>. Larceny and Theft often follow an <strong>economic clock</strong>, 
-            peaking during business hours when foot traffic is highest. In contrast, Assaults follow a <strong>social-emotional clock</strong>, 
-            intensifying during late-night hours and weekends. Does your neighborhood follow this rule?
-        </p>
-            <!-- Interactive Plotly Time Series -->
-            <iframe 
-                src="visualizations/crime_hourly_interactive.html" 
-                style="width: 100%; height: 500px; border: none;" 
-                scrolling="no">
-            </iframe>
-            <p class="caption">
-                The distribution of crime categories shows that focusing resources on the "tallest peaks" can yield the greatest impact on city-wide safety.
-            </p>
-        </div>
-        <p>
-                The time-series shape reveals clear trends: some crimes declined steadily, others showed sudden drops or rebounds. 
-                These patterns are not random — they reflect real shifts in policing, policy, and city life.
-        </p>
     </section>
 
-    
-    <section class="container">
-        <h2>Pulse</h2>
-        <p>
-            <strong>Analytical Insight:</strong> While the Tenderloin and Southern districts remain high-volume centers, the <em>intensity</em> 
-            of specific crimes shifts across the map. Use the filters to see how the "2015 Pivot" affected property crime specifically in 
-            residential vs. commercial zones.
-        </p>
-            <!-- Interactive Plotly Time Series -->
-            <iframe src="visualizations/sf_crime_heatmap.html" 
-                style="width: 100%; height: 550px; border: none; display: block;" 
-                scrolling="no">                  
-            </iframe>
-            <p class="caption">
-                The distribution of crime categories shows that focusing resources on the "tallest peaks" can yield the greatest impact on city-wide safety.
-            </p>
-        </div>
-        <p>
-                The geographic distribution is highly uneven. A few districts drive most of the volume, while others show very different shapes — 
-                from heavy tails of occasional serious incidents to steady low-level activity.
-        </p>
-    </section>
-    
-    
-<!--- End --->
-
-        <!-- ==================== DRILL-DOWN STORY ENDING ==================== -->
     <div class="container">    
         <section id="drilldown">
             <h2>Answer Your Own Questions</h2>
-            <p style="margin-bottom: 1.5rem;">
-                You’ve seen the overall story. Now explore the data yourself — choose what matters most to your role.
-            </p>
-            
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
-                <div class="card" style="background:white; border:1px solid #ddd; padding:1.2rem;">
-                    <h3 style="color:#0f3460;">Focus on Violent Crime</h3>
-                    <p>See the shape of assaults, robberies, and homicides over time and by district.</p>
-                    <a href="visualizations/crime_hourly_interactive.html" class="explore-btn" style="background:#0f3460; font-size:0.95rem;">Explore Violent Crimes →</a>
+                <div class="card" style="padding:1.2rem; border-radius: 8px;">
+                    <h3>Focus on Violent Crime</h3>
+                    <p>See the shape of assaults and robberies over time.</p>
+                    <a href="#" class="explore-btn" style="background:#0f3460; font-size:0.95rem;">Explore →</a>
                 </div>
                 
-                <div class="card" style="background:white; border:1px solid #ddd; padding:1.2rem;">
-                    <h3 style="color:#0f3460;">Property Crime Patterns</h3>
-                    <p>Understand theft, burglary, and vehicle theft — where they cluster and how they changed.</p>
-                    <a href="visualizations/evolution_crime_hourly_interactive.html" class="explore-btn" style="background:#0f3460; font-size:0.95rem;">Explore Property Crimes →</a>
+                <div class="card" style="padding:1.2rem; border-radius: 8px;">
+                    <h3>Property Crime Patterns</h3>
+                    <p>Understand theft and burglary clustering.</p>
+                    <a href="#" class="explore-btn" style="background:#0f3460; font-size:0.95rem;">Explore →</a>
                 </div>
-                
-                <div class="card" style="background:white; border:1px solid #ddd; padding:1.2rem;">
-                    <h3 style="color:#0f3460;">Compare Districts</h3>
-                    <p>Pick any two neighborhoods and see side-by-side distributions and trends.</p>
-                    <a href="visualizations/sf_crime_heatmap.html" class="explore-btn" style="background:#0f3460; font-size:0.95rem;">Compare Districts →</a>
-                </div>                
-                
-                <div class="card" style="background:white; border:1px solid #ddd; padding:1.2rem;">
-                    <h3 style="color:#0f3460;">Compare Category Crimes</h3>
-                    <p>Pick any two neighborhoods and see side-by-side distributions and trends.</p>
-                    <a href="visualizations/sf_crime_heatmap.html" class="explore-btn" style="background:#0f3460; font-size:0.95rem;">Compare Districts →</a>
-                </div>
-                
             </div>
-
-            <p style="margin-top: 2rem; text-align:center; font-size:1rem; color:#555;">
-                <strong>Tip:</strong> Use the filters and hover tools to answer your specific questions. 
-                All charts use the same clear color scheme so you can move between views easily.
-            </p>
         </section>
 
-        <footer style="text-align:center; padding:3rem 1rem; color:#666; font-size:0.95rem;">
-            <p>Data source: San Francisco Police Department Incident Reports (2003–2026). 
-            External references and methodology available in the technical notebook.</p>
-            <p style="margin-top:1rem;">Made with clarity in mind for decision-makers.</p>
+        <footer style="text-align:center; padding:3rem 1rem; color:var(--caption-color); font-size:0.95rem;">
+            <p>Data source: San Francisco Police Department (2003–2026).</p>
         </footer>
     </div>
 
+    <script>
+        function toggleTheme() {
+            const body = document.documentElement;
+            const currentTheme = body.getAttribute("data-theme");
+            if (currentTheme === "dark") {
+                body.removeAttribute("data-theme");
+                localStorage.setItem("theme", "light");
+            } else {
+                body.setAttribute("data-theme", "dark");
+                localStorage.setItem("theme", "dark");
+            }
+        }
+
+        // Maintain preference on reload
+        if (localStorage.getItem("theme") === "dark") {
+            document.documentElement.setAttribute("data-theme", "dark");
+        }
+    </script>
 </body>
 </html>
