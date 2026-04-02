@@ -90,26 +90,53 @@
 
     <section class="container">
         <h2>Data Foundation & Quality Assurance</h2>
-        <p>
-            To uphold the highest analytical standards, the engineering research team at the Technical 
-            University of Denmark (DTU) employs a unified longitudinal dataset sourced from 
-            the <a href="https://data.sfgov.org" target="_blank">SF Open Data Portal</a>. Specifically,
-            we integrate the <strong>“Police Department Incident Report: 2018 to Present.”</strong> 
-            dataset with the <strong>“Police Department Incident Reports Historical 2003 to May 2018.”</strong>
-            dataset through a rigorous harmonization and standardization procedure. This process ensures a 
-            coherent and methodologically robust foundation for all subsequent analyses.
-        </p>
+            <p>
+                To maintain the highest standards of analytical integrity, the research team at the <strong>Technical University of Denmark (DTU)</strong> 
+                has engineered a unified longitudinal dataset. This foundation was built by harmonizing two primary streams from the 
+                <a href="https://data.sfgov.org" target="_blank" style="color: #1a3a5f; text-decoration: underline;">San Francisco Open Data Portal</a>: 
+                the Historical Incident Archive (2003–2018) and the Contemporary Incident Reporting System (2018–Present).
+            </p>
+            <p>
+                The integration process utilized rigorous standardization protocols to bridge discrepancies in reporting taxonomies and software migrations. 
+                This ensured that the 2.9 million recorded incidents remain comparable across two decades, providing a methodologically sound basis for 
+                identifying strategic public safety trends.                
+            </p>
         
         <div class="viz-container">
             <img src="visualizations/historic_recent_time_series_files_2003_2026.png" alt="Historic Time Series 2003 to 2026" 
                 style="width:100%; border-radius:12px;">
             <p class="caption">
+                Comparative Temporal Analysis.</strong> The navy-blue series (2003–2018) captures 
+                historical volatility, while the red series (2018–2026) reflects modern structural 
+                shifts and the post-pandemic decline.    
+
                 This report draws on publicly accessible data provided through the San Francisco Open Data Portal, specifically within its Public Safety section. As one of 
                 the city’s most valuable resources for residents, researchers, and policymakers, this platform offers comprehensive datasets that facilitate transparent 
                 analysis of long‑term crime trends.
             </p>
-        </div>
+        </div></section>
 
+        <section>
+            <h2>The "Focus Crime" Strategic Framework</h2>
+            <p>
+                With 52 distinct crime categories in the raw data, effective governance requires 
+                prioritization. Our team implemented a targeted filtering framework to 
+                isolate <strong>"Focus Crimes"</strong>—those with the highest correlation to 
+                economic stability and resident wellbeing. The selection criteria are defined as 
+                follows:
+            </p>
+            <ul class="bullet-list">
+                <li><strong>Human Capital Protection:</strong> Incidents involving direct violence 
+                    or threats to life.</li>
+                <li><strong>Economic Safeguards:</strong> Crimes resulting in severe property loss 
+                    or significant fiscal impact on the private sector.</li>
+                <li><strong>Structural Integrity:</strong> Indicators of organized, systematic, 
+                    or non-random criminal behavior.</li>
+                <li><strong>Urban Order:</strong> High-severity disruptions that threaten the 
+                    social fabric of the city’s commercial and residential districts.</li>
+            </ul>
+        </section>
+<!---
         <div class="viz-container">
             <p><strong>The “Focus Crime” Filter:</strong> Given the extensive scope of the dataset—encompassing 2,900,115 recorded incidents across 52 distinct crime 
                 categories—the analyst team implemented a targeted filtering framework to identify the offenses with the greatest implications for public safety and 
@@ -123,7 +150,7 @@
             </ul>
         </div>
     </section>
-
+--->
     <section class="container">
         <h2>The Anatomy of Urban Incidents</h2>
         <p>
