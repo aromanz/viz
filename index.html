@@ -345,24 +345,31 @@
 
     
     <section class="container">
-        <h2>Pulse</h2>
+        <h2>Pulse: Geospatial Incident Analysis</h2>
         <p>
             <strong>Analytical Insight:</strong> While the Tenderloin and Southern districts remain high-volume centers, the <em>intensity</em> 
-            of specific crimes shifts across the map. Use the filters to see how the "2015 Pivot" affected property crime specifically in 
-            residential vs. commercial zones.
+            of specific crimes shifts dramatically across the city's geography. Use the filters below to observe how 
+            <strong>Drug/Narcotic Offenses</strong> are heavily concentrated in the Tenderloin (Risk Ratio: 4.24), while 
+            <strong>Motor Vehicle Theft</strong> shifts the focus of risk to the Ingleside and Bayview districts (Risk Ratio: 1.90). 
+            This suggests that "danger" is not a monolith but a specialized temporal signature unique to each neighborhood.
         </p>
             <!-- Interactive Plotly Time Series -->
-            <iframe src="visualizations/sf_crime_heatmap.html" 
-                style="width: 100%; height: 550px; border: none; display: block;" 
+            <iframe src="visualizations/scientific_risk_map.html" 
+                style="width: 100%; height: 620px; border: none; display: block;" 
                 scrolling="no">                  
             </iframe>
             <p class="caption">
-                The distribution of crime categories shows that focusing resources on the "tallest peaks" can yield the greatest impact on city-wide safety.
+            <strong>Comparative Geospatial Distribution of Relative Risk.</strong>
+            Focusing resources on the "tallest peaks"—such as larceny in the Central district or assaults in the Tenderloin—allows 
+            for precision-guided public safety interventions.
             </p>
         </div>
         <p>
-                The geographic distribution is highly uneven. A few districts drive most of the volume, while others show very different shapes — 
-                from heavy tails of occasional serious incidents to steady low-level activity.
+            The geographic distribution of risk in San Francisco is highly uneven. A few districts, such as the <strong>Mission</strong> 
+            and <strong>Bayview</strong>, act as anchors for specific incident types like Vandalism and Weapon Laws, while 
+            residential areas like the <strong>Richmond</strong> and <strong>Park</strong> districts show much lower risk ratios 
+            across the board. This data reveals that crime in the city follows a "specialization" model; understanding these 
+            geospatial signatures is essential for moving from reactive policing to proactive, data-driven urban management.
         </p>
     </section>
     
@@ -393,13 +400,24 @@
                     </p>
                     <a href="visualizations/evolution_crime_hourly_interactive.html" class="explore-btn" style="background:#0f3460; font-size:0.95rem;">Explore Diurnal Pulse →</a>
                 </div>
+
+                <div class="card" style="background:white; border:1px solid #ddd; padding:1.2rem; border-radius:8px;">
+                    <h3 style="color:#0f3460; font-family:Arial, sans-serif; margin-top:0;">Spatiotemporal Hotspot Evolution</h3>
+                    <p style="font-family:Arial, sans-serif; color:#444; line-height:1.5;">
+                        Observe the <strong>dynamic migration</strong> of crime hotspots across San Francisco. This animated heatmap tracks twenty years of geospatial shifts to reveal persistent and emerging patterns of urban risk.
+                    </p>
+                    <a href="visualizations/sf_crime_heatmap.html" class="explore-btn" style="background:#0f3460; color:white; padding:10px 18px; text-decoration:none; display:inline-block; border-radius:4px; font-size:0.95rem; font-weight:bold;">
+                        Analyze Spatial Shifts →
+                    </a>
+                </div>
+
     <!---            
                 <div class="card" style="background:white; border:1px solid #ddd; padding:1.2rem;">
-                    <h3 style="color:#0f3460;">Compare Districts</h3>
-                    <p>Pick any two neighborhoods and see side-by-side distributions and trends.</p>
+                    <h3 style="color:#0f3460;">Geospatial Crime Incidents</h3>
+                    <p>Visualize San Francisco crimes evolution in a heatmap movie and generate your own conclusions.</p>
                     <a href="visualizations/sf_crime_heatmap.html" class="explore-btn" style="background:#0f3460; font-size:0.95rem;">Compare Districts →</a>
-                </div>                
-                
+                </div>    
+                          
                 <div class="card" style="background:white; border:1px solid #ddd; padding:1.2rem;">
                     <h3 style="color:#0f3460;">Compare Category Crimes</h3>
                     <p>Pick any two neighborhoods and see side-by-side distributions and trends.</p>
