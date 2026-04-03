@@ -312,25 +312,34 @@
     
 
     <section class="container">
-        <h2>Rhythm</h2>
-        <p>
-            <strong>Analytical Insight:</strong> Notice the <em>divergent rhythms</em>. Larceny and Theft often follow an <strong>economic clock</strong>, 
-            peaking during business hours when foot traffic is highest. In contrast, Assaults follow a <strong>social-emotional clock</strong>, 
-            intensifying during late-night hours and weekends. Does your neighborhood follow this rule?
-        </p>
+        <h2>Rhythm: The Temporal Fingerprint of Urban Incidents</h2>
+            <p>
+                <strong>Analytical Insight:</strong> Our analysis reveals a sophisticated 
+                "chronology of risk." Incident categories in San Francisco are not distributed 
+                randomly throughout the day; instead, they follow distinct <strong>circadian rhythms</strong>. 
+            </p>
             <!-- Interactive Plotly Time Series -->
             <iframe 
-                src="visualizations/crime_hourly_interactive.html" 
+                src="visualizations/evolution_24h_crimes_boxplot.html" 
                 style="width: 100%; height: 500px; border: none;" 
                 scrolling="no">
             </iframe>
             <p class="caption">
-                The distribution of crime categories shows that focusing resources on the "tallest peaks" can yield the greatest impact on city-wide safety.
+                <strong>Chronological Distribution.</strong> Medians (white lines) identify the 
+                central tendency of incident timing, while the vertical height of the boxes (IQR) 
+                measures temporal predictability.
             </p>
         </div>
         <p>
-                The time-series shape reveals clear trends: some crimes declined steadily, others showed sudden drops or rebounds. 
-                These patterns are not random — they reflect real shifts in policing, policy, and city life.
+            <ul>
+                <li><strong>Economic Rhythms:</strong> Larceny and Motor Vehicle Theft peak during 
+                    the 16:00–18:00 window, aligning with commercial peaks and commuter transitions.</li>
+                <li><strong>Nocturnal Shifts:</strong> Robbery and Vandalism intensify in the 
+                    late evening, following a social clock that extends well past sunset.</li>
+                <li><strong>Temporal Variance:</strong> Crimes like Fraud show high variance, 
+                    indicating they are less tied to specific hours and present a constant 
+                    baseline of risk.</li>
+            </ul>        
         </p>
     </section>
 
